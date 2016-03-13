@@ -1,0 +1,113 @@
+$darkgrey: #333;
+$blue : #cfe2f3;
+$yellow: #ffe599;
+$red: #ea9999;
+
+
+.table{
+   
+    td{
+        &:first-child{
+            width:80px;
+            text-align:right;
+             border-right:1px solid $darkgrey;
+        }
+        &:nth-child(2){
+            display:flex;
+        }
+        .item{
+            border:1px solid $darkgrey;
+            border-radius:5px;
+            padding: 5px;
+            flex:1 1 auto;
+            margin-right:10px;
+            cursor:pointer;
+            display:none;
+           &.highlight{
+           box-shadow: 1px 1px 5px 0px rgba(230,67,89,0.75);
+           }
+        }    
+    }
+
+   &.showDetail{
+     margin-bottom:200px;
+   }
+}
+
+.yellow{
+    background: $yellow;
+     &:hover{
+                background: lighten($yellow, 10%);
+            }
+}
+.red{
+    background: $red;
+         &:hover{
+                background: lighten($red, 10%);
+            }
+}
+.blue{
+    background: $blue;
+         &:hover{
+                background: lighten($blue, 5%);
+            }
+}
+#color{
+    width:20px;
+    height:20px;
+    display:inline-block;
+    vertical-align:middle;
+}
+.detail{
+    overflow-y:scroll;
+    position:fixed;
+    bottom:-220px;
+    height:200px;
+    width: 100%;
+    padding: 10px 20px;
+    border-top: 3px solid #000;
+    background:#fff;
+    transition: bottom 0.5s ease-in-out;
+    &.show{
+        bottom:0;
+        transition: bottom 0.5s ease-in-out;
+    }
+}
+
+@media all and (max-width:480px)
+{
+    .table td:nth-child(2){
+        display:block;
+    }
+
+   .overlay{
+        position:fixed;
+        top:0;
+        right:0;
+        width:100%;
+        height:100%;
+        background: rgba(0,0,0,0.5);
+        z-index:10;
+        display:none;
+        &.show{
+            display:block;
+        }
+   }
+
+    .detail{
+        opacity: 0;
+        &.show{
+            width:300px;
+            height:200px;
+            position:fixed;
+            top:50%;
+            left:50%;
+            margin-top:-100px;
+            margin-left:-150px;
+            z-index:11;
+            border-radius:5px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in;
+        }
+    }
+}
